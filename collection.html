@@ -18,16 +18,16 @@
       --ink: #171412;
       --muted: #6b6560;
       --bg: #faf7f2;
-      --primary: #1b2a4a;   /* deep navy - premium brand color */
+      --primary: #1b2a4a;   
       --primary-dark: #101b30;
-      --accent: #b8902e;    /* muted gold - for sale/offer highlights */
+      --accent: #b8902e;    
     }
 
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
     h1, h2, h3, .heading-font { font-family: 'Poppins', sans-serif; }
 
-    /* Custom checkbox color - tailwind default checkbox color set via accent-color */
+    /* Custom checkbox color */
     input[type="checkbox"] {
       accent-color: var(--primary);
     }
@@ -94,7 +94,7 @@
       <!-- ============ SIDEBAR FILTERS ============ -->
       <aside class="w-full md:w-56 flex-shrink-0">
 
-        <!-- Filters heading + clear button (mobile la sidebar romba nedama poga koodathunu clear button vachirukom) -->
+        <!-- Filters heading + clear button -->
         <div class="flex items-center justify-between mb-4">
           <h2 class="font-bold text-lg">Filters</h2>
           <button id="clearFilters" class="text-sm text-[var(--primary)] hover:underline">Clear</button>
@@ -161,12 +161,12 @@
       <!-- ============ PRODUCT GRID ============ -->
       <div class="flex-1">
 
-        <!-- Search/filter result edhuvum illaina idhu kaatum -->
+        <!-- Search/filter -->
         <p id="noResult" class="hidden text-center text-gray-500 py-10">
           No products found. Try different filters or search.
         </p>
 
-        <!-- Ovoru product card kum data-name, data-occasion, data-color, data-arrival attributes vachirukom -->
+        
         <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-6">
 
           <div class="product-card border rounded-lg p-3 hover:shadow-lg transition"
