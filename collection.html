@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXEFASHION - Collections</title>
+
+   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --ink: #171412;
+      --muted: #6b6560;
+      --bg: #faf7f2;
+      --primary: #1b2a4a;   /* deep navy - premium brand color */
+      --primary-dark: #101b30;
+      --accent: #b8902e;    /* muted gold - for sale/offer highlights */
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
+    h1, h2, h3, .heading-font { font-family: 'Poppins', sans-serif; }
+
+    /* Custom checkbox color - tailwind default checkbox color set via accent-color */
+    input[type="checkbox"] {
+      accent-color: var(--primary);
+    }
+
+    .product-card img { transition: transform 0.4s ease; }
+    .product-card:hover img { transform: scale(1.06); }
+    .product-card { transition: box-shadow 0.3s ease, transform 0.3s ease; }
+    .product-card:hover { box-shadow: 0 12px 28px rgba(23,20,18,0.12); transform: translateY(-4px); }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP STRIP ============ -->
+  <div class="bg-[var(--primary)] text-white text-center text-sm py-2 px-4">
+    Sign Up and <span class="font-semibold text-[var(--accent)]">GET 20% OFF</span> for your first Order
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+
+      <a href="index.html" class="heading-font text-2xl font-extrabold text-[var(--primary)]">LUXE FASHION</a>
+
+      <nav class="hidden md:flex gap-8 font-medium text-sm">
+        <a href="index.html" class="hover:text-[var(--primary)]">Home</a>
+        <a href="index.html#new-arrival" class="hover:text-[var(--primary)]">New Arrival</a>
+        <a href="index.html#most-wanted" class="hover:text-[var(--primary)]">Most Wanted</a>
+        <a href="collection.html" class="text-[var(--primary)]">Collections</a>
+        <a href="contact.html" class="hover:text-[var(--primary)]">Contact Us</a>
+      </nav>
+
+      <button id="menuBtn" class="md:hidden text-3xl text-[var(--primary)]">&#9776;</button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden md:hidden flex flex-col gap-4 px-4 pb-4 font-medium bg-white">
+      <a href="index.html" class="hover:text-[var(--primary)]">Home</a>
+      <a href="index.html#new-arrival" class="hover:text-[var(--primary)]">New Arrival</a>
+      <a href="index.html#most-wanted" class="hover:text-[var(--primary)]">Most Wanted</a>
+      <a href="collection.html" class="text-[var(--primary)]">Collections</a>
+      <a href="contact.html" class="hover:text-[var(--primary)]">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- ============ PAGE BODY (Sidebar + Products) ============ -->
+  <section class="max-w-7xl mx-auto px-4 py-10">
+    <h1 class="text-3xl font-bold mb-6">All Collections</h1>
+
+    <!-- Search bar - full width, top of the page (video la irrukura maari) -->
+    <div class="relative max-w-xl mb-8">
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="search"
+        class="w-full border border-gray-300 rounded-lg pl-4 pr-10 py-2.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+      />
+      <span class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-600"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+</svg>
+</span>
+    </div>
+
+    <div class="flex flex-col md:flex-row gap-10">
+
+      <!-- ============ SIDEBAR FILTERS ============ -->
+      <aside class="w-full md:w-56 flex-shrink-0">
+
+        <!-- Filters heading + clear button (mobile la sidebar romba nedama poga koodathunu clear button vachirukom) -->
+        <div class="flex items-center justify-between mb-4">
+          <h2 class="font-bold text-lg">Filters</h2>
+          <button id="clearFilters" class="text-sm text-[var(--primary)] hover:underline">Clear</button>
+        </div>
+
+        <!-- Occasion filter group -->
+        <div class="mb-8">
+          <h3 class="font-bold mb-3">Occasion</h3>
+          <div class="flex flex-col gap-2 text-gray-700">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-occasion" value="casual" />
+              Casual
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-occasion" value="sports" />
+              Sports
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-occasion" value="formal" />
+              Formal
+            </label>
+          </div>
+        </div>
+
+        <!-- Colors filter group -->
+        <div class="mb-8">
+          <h3 class="font-bold mb-3">Colors</h3>
+          <div class="flex flex-col gap-2 text-gray-700">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-color" value="black" />
+              Black
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-color" value="white" />
+              White
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-color" value="blue" />
+              Blue
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-color" value="grey" />
+              Grey
+            </label>
+          </div>
+        </div>
+
+        <!-- Arrivals filter group -->
+        <div class="mb-8">
+          <h3 class="font-bold mb-3">Arrivals</h3>
+          <div class="flex flex-col gap-2 text-gray-700">
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-arrival" value="new" />
+              New
+            </label>
+            <label class="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" class="filter-arrival" value="sale" />
+              Sale
+            </label>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ============ PRODUCT GRID ============ -->
+      <div class="flex-1">
+
+        <!-- Search/filter result edhuvum illaina idhu kaatum -->
+        <p id="noResult" class="hidden text-center text-gray-500 py-10">
+          No products found. Try different filters or search.
+        </p>
+
+        <!-- Ovoru product card kum data-name, data-occasion, data-color, data-arrival attributes vachirukom -->
+        <div id="productGrid" class="grid grid-cols-2 sm:grid-cols-3 gap-6">
+
+          <div class="product-card border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="cotton t-shirt" data-occasion="casual" data-color="white" data-arrival="new">
+            <img src="images/new1.jpg" onerror="this.src='https://placehold.co/300x300?text=T-Shirt'"
+                 alt="Cotton T-Shirt" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Cotton T-Shirt</p>
+            <p class="text-[var(--primary)] font-bold">₹599</p>
+          </div>
+
+          <div class="product-card border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="denim jacket" data-occasion="casual" data-color="blue" data-arrival="new">
+            <img src="images/new2.jpg" onerror="this.src='https://placehold.co/300x300?text=Denim+Jacket'"
+                 alt="Denim Jacket" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Denim Jacket</p>
+            <p class="text-[var(--primary)] font-bold">₹1499</p>
+          </div>
+
+          <div class="product-card relative border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="running shoes" data-occasion="sports" data-color="black" data-arrival="new">
+            <img src="images/new3.jpg" onerror="this.src='https://placehold.co/300x300?text=Running+Shoes'"
+                 alt="Running Shoes" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Running Shoes</p>
+            <p class="text-[var(--primary)] font-bold">₹2199</p>
+          </div>
+
+          <div class="product-card border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="casual cap" data-occasion="casual" data-color="black" data-arrival="new">
+            <img src="images/new4.jpg" onerror="this.src='https://placehold.co/300x300?text=Casual+Cap'"
+                 alt="Casual Cap" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Casual Cap</p>
+            <p class="text-[var(--primary)] font-bold">₹299</p>
+          </div>
+
+          <div class="product-card relative border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="sports shoes" data-occasion="sports" data-color="white" data-arrival="sale">
+            
+            <img src="images/mw1.jpg" onerror="this.src='https://placehold.co/300x300?text=Sports+Shoes'"
+                 alt="Sports Shoes" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Sports Shoes</p>
+            <p class="text-[var(--primary)] font-bold">₹1899</p>
+          </div>
+
+          <div class="product-card relative border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="hoodie" data-occasion="casual" data-color="grey" data-arrival="sale">
+            
+            <img src="images/mw2.jpg" onerror="this.src='https://placehold.co/300x300?text=Hoodie'"
+                 alt="Hoodie" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Hoodie</p>
+            <p class="text-[var(--primary)] font-bold">₹1299</p>
+          </div>
+
+          <div class="product-card relative border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="formal shirt" data-occasion="formal" data-color="white" data-arrival="sale">
+            
+            <img src="images/mw3.jpg" onerror="this.src='https://placehold.co/300x300?text=Formal+Shirt'"
+                 alt="Formal Shirt" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Formal Shirt</p>
+            <p class="text-[var(--primary)] font-bold">₹999</p>
+          </div>
+
+          <div class="product-card relative border rounded-lg p-3 hover:shadow-lg transition"
+               data-name="track pant" data-occasion="sports" data-color="grey" data-arrival="sale">
+            
+            <img src="images/mw4.jpg" onerror="this.src='https://placehold.co/300x300?text=Track+Pant'"
+                 alt="Track Pant" class="w-full aspect-square object-cover rounded-md mb-3" />
+            <p class="font-medium">Track Pant</p>
+            <p class="text-[var(--primary)] font-bold">₹899</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-[#171412] text-gray-300 py-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-6">
+      <div>
+        <p class="heading-font text-white text-xl font-bold">LUXE FASHION</p>
+        <p class="text-sm mt-2 max-w-xs text-gray-400">Latest style, best quality - your fashion partner.</p>
+        <div class="text-xl pt-4 flex gap-5">
+        <i class="fa-brands fa-instagram cursor-pointer transition-all duration-300 hover:text-pink-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-brands fa-facebook cursor-pointer transition-all duration-300 hover:text-blue-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-brands fa-youtube cursor-pointer transition-all duration-300 hover:text-red-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-solid fa-feather cursor-pointer transition-all duration-300 hover:text-purple-500 hover:scale-125 hover:rotate-12"></i>
+        </div>
+      </div>
+      <div class="flex gap-6 text-sm">
+        <a href="index.html" class="hover:text-white">Home</a>
+        <a href="collection.html" class="hover:text-white">Collections</a>
+        <a href="contact.html" class="hover:text-white">Contact Us</a>
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-500 mt-8">&copy; 2026 LUXEFASHION. All rights reserved.</p>
+  </footer>
+
+  <script src="collection.js"></script>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXEFASHION - Contact Us</title>
+
+   <script src="https://cdn.tailwindcss.com"></script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --ink: #171412;
+      --muted: #6b6560;
+      --bg: #faf7f2;
+      --primary: #1b2a4a;
+      --primary-dark: #101b30;
+      --accent: #b8902e;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
+    h1, h2, h3, .heading-font { font-family: 'Poppins', sans-serif; }
+
+    .btn-primary { background: var(--primary); transition: all 0.25s ease; }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    .form-card { box-shadow: 0 12px 32px rgba(23,20,18,0.08); }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP ANNOUNCEMENT BAR ============ -->
+  <div id="topBar" class="bg-[var(--primary)] text-white text-center text-sm py-2 px-4 relative">
+    Sign Up and <span class="font-semibold text-[var(--accent)]">GET 20% OFF</span> for your first Order
+    <button id="closeTopBar" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white">&times;</button>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+
+      <a href="index.html" class="heading-font text-2xl font-extrabold text-[var(--primary)]">LUXE FASHION</a>
+
+      <nav class="hidden md:flex gap-8 font-medium text-sm">
+        <a href="index.html" class="hover:text-[var(--primary)]">Home</a>
+        <a href="index.html#new-arrival" class="hover:text-[var(--primary)]">New Arrival</a>
+        <a href="index.html#most-wanted" class="hover:text-[var(--primary)]">Most Wanted</a>
+        <a href="collection.html" class="hover:text-[var(--primary)]">Collections</a>
+        <a href="contact.html" class="text-[var(--primary)]">Contact Us</a>
+      </nav>
+
+      <button id="menuBtn" class="md:hidden text-3xl text-[var(--primary)]">&#9776;</button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden md:hidden flex flex-col gap-4 px-4 pb-4 font-medium bg-white">
+      <a href="index.html" class="hover:text-[var(--primary)]">Home</a>
+      <a href="index.html#new-arrival" class="hover:text-[var(--primary)]">New Arrival</a>
+      <a href="index.html#most-wanted" class="hover:text-[var(--primary)]">Most Wanted</a>
+      <a href="collection.html" class="hover:text-[var(--primary)]">Collections</a>
+      <a href="contact.html" class="text-[var(--primary)]">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- ============ PAGE HEADER ============ -->
+  <section class="bg-[var(--primary)] py-14 text-center text-white">
+    <h1 class="heading-font text-3xl md:text-4xl font-extrabold mb-2">Contact Us</h1>
+    <p class="text-white/70">If you have any doubts, fill the form</p>
+  </section>
+
+  <!-- ============ CONTACT FORM ============ -->
+  <section class="max-w-2xl mx-auto px-4 -mt-7 relative z-10 pb-16">
+    <form id="contactForm" class="form-card bg-white rounded-2xl p-6 md:p-10 flex flex-col gap-5">
+
+      <div>
+        <label class="block font-medium mb-1 text-sm">Name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Your name"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+        />
+        <p id="nameError" class="hidden text-red-500 text-sm mt-1">Please enter your name.</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1 text-sm">Email</label>
+        <input
+          type="text"
+          id="email"
+          placeholder="ex@email.com"
+          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+        />
+        <p id="emailError" class="hidden text-red-500 text-sm mt-1">Please enter a valid email.</p>
+      </div>
+
+      <div>
+        <label class="block font-medium mb-1 text-sm">Message</label>
+        <textarea
+          id="message"
+          rows="5"
+          placeholder="Type your message here..."
+          class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]"
+        ></textarea>
+        <p id="messageError" class="hidden text-red-500 text-sm mt-1">Please enter a message.</p>
+      </div>
+
+      <button
+        type="submit"
+        class="btn-primary text-white px-6 py-3 rounded-full font-semibold"
+      >
+        Send Message
+      </button>
+
+      <p id="successMsg" class="hidden text-[var(--primary)] font-medium text-center">
+        Thank you! Your message has been sent. 🎉
+      </p>
+    </form>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-[#171412] text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <p class="heading-font text-white text-xl font-bold mb-2">LUXE FASHION</p>
+        <p class="text-sm max-w-xs text-gray-400">Latest style, best quality - your fashion partner.</p>
+        <div class="text-xl pt-4 flex gap-5">
+        <i class="fa-brands fa-instagram cursor-pointer transition-all duration-300 hover:text-pink-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-brands fa-facebook cursor-pointer transition-all duration-300 hover:text-blue-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-brands fa-youtube cursor-pointer transition-all duration-300 hover:text-red-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-solid fa-feather cursor-pointer transition-all duration-300 hover:text-purple-500 hover:scale-125 hover:rotate-12"></i>
+        </div>
+      </div>
+      <div class="flex gap-10 text-sm">
+        <div>
+          <p class="text-white font-semibold mb-3">Quick Links</p>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="collection.html" class="hover:text-white">Collections</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-500 mt-10">&copy; 2026 LUXEFASHION. All rights reserved.</p>
+  </footer>
+
+  <script src="contact.js"></script>
+</body>
+</html>

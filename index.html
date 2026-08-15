@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ta">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LUXEFASHION - Home</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Poppins, Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.3.1/css/all.min.css" integrity="sha512-QeR2VH+lsBE5LSAe1Q5EnTBbe7XTBubt8dG93Y7gidSgdMCr8nVqKcfKAMyN96SV8KDbZVTDXChatu5G2KQGzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --ink: #171412;
+      --muted: #6b6560;
+      --bg: #faf7f2;
+      --primary: #1b2a4a; 
+      --primary-dark: #101b30;
+      --accent: #b8902e;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--ink); }
+    h1, h2, h3, .heading-font { font-family: 'Poppins', sans-serif; }
+
+    .btn-primary {
+      background: var(--primary);
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); }
+
+    /* Product card image zoom on hover */
+    .product-card img { transition: transform 0.4s ease; }
+    .product-card:hover img { transform: scale(1.06); }
+    .product-card { transition: box-shadow 0.3s ease, transform 0.3s ease; }
+    .product-card:hover { box-shadow: 0 12px 28px rgba(23,20,18,0.12); transform: translateY(-4px); }
+
+    /* Hero slider */
+    .slide { transition: opacity 0.8s ease-in-out; }
+    .dot.active { background: var(--accent); width: 24px; }
+    .dot { transition: all 0.3s ease; }
+
+    /* Wishlist heart */
+    .wishlist-btn svg { transition: all 0.2s ease; }
+    .wishlist-btn.active svg { fill: #dc2626; stroke: #dc2626; }
+    .wishlist-btn:hover { transform: scale(1.15); }
+
+    /* Brand logo grayscale -> color on hover */
+    .brand-logo { filter: grayscale(100%) opacity(0.6); transition: all 0.3s ease; }
+    .brand-logo:hover { filter: grayscale(0%) opacity(1); transform: scale(1.2); }
+
+    /* Fade up entrance for section headings */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.6s ease forwards; }
+  </style>
+</head>
+<body>
+
+  <!-- ============ TOP ANNOUNCEMENT BAR ============ -->
+  <div id="topBar" class="bg-[var(--primary)] text-white text-center text-sm py-2 px-4 relative">
+    Sign Up and <span class="font-semibold text-[var(--accent)]">GET 20% OFF</span> for your first Order
+    <button id="closeTopBar" class="absolute right-4 top-1/2 -translate-y-1/2 text-white/70 hover:text-white">&times;</button>
+  </div>
+
+  <!-- ============ NAVBAR ============ -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 flex items-center justify-between h-16">
+
+      <a href="index.html" class="heading-font text-2xl font-extrabold text-[var(--primary)]">LUXE FASHION</a>
+
+      <nav class="hidden md:flex gap-8 font-medium text-sm">
+        <a href="index.html" class="hover:text-[var(--primary)]">Home</a>
+        <a href="index.html#new-arrival" class="hover:text-[var(--primary)]">New Arrival</a>
+        <a href="index.html#most-wanted" class="hover:text-[var(--primary)]">Most Wanted</a>
+        <a href="collection.html" class="hover:text-[var(--primary)]">Collections</a>
+        <a href="contact.html" class="hover:text-[var(--primary)]">Contact Us</a>
+      </nav>
+
+      <button id="menuBtn" class="md:hidden text-3xl text-[var(--primary)]">&#9776;</button>
+    </div>
+
+    <nav id="mobileMenu" class="hidden md:hidden flex flex-col gap-4 px-4 pb-4 font-medium bg-white">
+      <a href="index.html" class="hover:text-[var(--primary)]">Home</a>
+      <a href="index.html#new-arrival" class="hover:text-[var(--primary)]">New Arrival</a>
+      <a href="index.html#most-wanted" class="hover:text-[var(--primary)]">Most Wanted</a>
+      <a href="collection.html" class="hover:text-[var(--primary)]">Collections</a>
+      <a href="contact.html" class="hover:text-[var(--primary)]">Contact Us</a>
+    </nav>
+  </header>
+
+  <!-- ============ HERO SLIDER ============ -->
+  <section class="relative overflow-hidden bg-[var(--primary)]">
+    <div id="sliderWrapper" class="relative h-[420px] md:h-[520px]">
+
+      <!-- Slide 1 -->
+      <div class="slide absolute inset-0 flex items-center opacity-100" data-slide="0">
+        <div class="max-w-7xl mx-auto px-4 w-full grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-white text-center md:text-left">
+            <p class="uppercase tracking-widest text-[var(--accent)] text-sm font-semibold mb-3">Summer Collection</p>
+            <h1 class="heading-font text-4xl md:text-5xl font-extrabold leading-tight">Level up your style with our new drop</h1>
+            <a href="collection.html" class="inline-block mt-6 btn-primary bg-[var(--accent)] hover:bg-[var(--accent)] text-[var(--primary-dark)] px-7 py-3 rounded-full font-semibold">Shop Now</a>
+          </div>
+          <img src="images/slider1.jpg" onerror="this.src='https://placehold.co/600x480?text=Summer+Collection'" alt="Summer Collection" class="rounded-2xl hidden md:block" />
+        </div>
+      </div>
+
+      <!-- Slide 2 -->
+      <div class="slide absolute inset-0 flex items-center opacity-0" data-slide="1">
+        <div class="max-w-7xl mx-auto px-4 w-full grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-white text-center md:text-left">
+            <p class="uppercase tracking-widest text-[var(--accent)] text-sm font-semibold mb-3">New Arrivals</p>
+            <h1 class="heading-font text-4xl md:text-5xl font-extrabold leading-tight">Fresh styles dropping every week</h1>
+            <a href="index.html#new-arrival" class="inline-block mt-6 btn-primary bg-[var(--accent)] hover:bg-[var(--accent)] text-[var(--primary-dark)] px-7 py-3 rounded-full font-semibold">Explore</a>
+          </div>
+          <img src="images/slider2.jpg" onerror="this.src='https://placehold.co/600x480?text=New+Arrivals'" alt="New Arrivals" class="rounded-2xl hidden md:block" />
+        </div>
+      </div>
+
+      <!-- Slide 3 -->
+      <div class="slide absolute inset-0 flex items-center opacity-0" data-slide="2">
+        <div class="max-w-7xl mx-auto px-4 w-full grid md:grid-cols-2 gap-8 items-center">
+          <div class="text-white text-center md:text-left">
+            <p class="uppercase tracking-widest text-[var(--accent)] text-sm font-semibold mb-3">Limited Time</p>
+            <h1 class="heading-font text-4xl md:text-5xl font-extrabold leading-tight">Up to 35% off best sellers</h1>
+            <a href="index.html#most-wanted" class="inline-block mt-6 btn-primary bg-[var(--accent)] hover:bg-[var(--accent)] text-[var(--primary-dark)] px-7 py-3 rounded-full font-semibold">Grab the Deal</a>
+          </div>
+          <img src="images/slider3.jpg" onerror="this.src='https://placehold.co/600x480?text=Sale'" alt="Sale" class="rounded-2xl hidden md:block" />
+        </div>
+      </div>
+
+      <!-- Prev / Next arrows -->
+      <button id="prevSlide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white w-10 h-10 rounded-full flex items-center justify-center">&#8592;</button>
+      <button id="nextSlide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white w-10 h-10 rounded-full flex items-center justify-center">&#8594;</button>
+    </div>
+
+    <!-- Dots -->
+    <div id="dotsWrapper" class="flex justify-center gap-2 pb-5 bg-[var(--primary)]">
+      <span class="dot active w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer" data-dot="0"></span>
+      <span class="dot w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer" data-dot="1"></span>
+      <span class="dot w-2.5 h-2.5 rounded-full bg-white/50 cursor-pointer" data-dot="2"></span>
+    </div>
+  </section>
+
+  <!-- ============ BRANDS STRIP ============ -->
+  <section class="max-w-7xl mx-auto px-4 py-10">
+    <p class="text-center text-sm uppercase tracking-widest text-[var(--muted)] mb-6">Trusted Brands</p>
+    <div class="flex flex-wrap justify-center items-center gap-10 md:gap-16 md:justify-between">
+      <img src="images/brand-puma.png" onerror="this.src='https://placehold.co/100x40?text=PUMA'" class="brand-logo w-20 h-15" alt="Puma" />
+      <img src="images/brand-adidas.png" onerror="this.src='https://placehold.co/100x40?text=ADIDAS'" class="brand-logo w-20 h-15" alt="Adidas" />
+      <img src="images/brand-nike.png" onerror="this.src='https://placehold.co/100x40?text=NIKE'" class="brand-logo w-20 h-15" alt="Nike" />
+      <img src="images/brand-reebok.png" onerror="this.src='https://placehold.co/100x40?text=REEBOK'" class="brand-logo w-20 h-15" alt="Reebok" />
+      <img src="images/brand-hm.png" onerror="this.src='https://placehold.co/100x40?text=H%26M'" class="brand-logo w-20 h-15" alt="H&M" />
+    </div>
+  </section>
+
+  <!-- ============ CUSTOMER EXPERIENCE ============ -->
+  <section class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <p class="text-center text-sm uppercase tracking-widest text-[var(--accent)] font-semibold mb-2">We Provide Best</p>
+      <h2 class="heading-font text-3xl font-bold text-center mb-12">Customer Experiences</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-2xl text-blue-800 border border-blue-200"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 0 0 3 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 0 0 5.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 0 0 9.568 3Z" />
+  <path stroke-linecap="round" stroke-linejoin="round" d="M6 6h.008v.008H6V6Z" />
+</svg>
+</div>
+          <h3 class="font-semibold mb-2">Original Products</h3>
+          <p class="text-sm text-[var(--muted)]">100% authentic products, sourced directly from trusted brands.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-2xl text-blue-800 border border-blue-200"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+</svg>
+</div>
+          <h3 class="font-semibold mb-2">Satisfaction Guarantee</h3>
+          <p class="text-sm text-[var(--muted)]">Not happy with your order? Easy returns within 7 days.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-2xl text-blue-800 border border-blue-200"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+</svg>
+</div>
+          <h3 class="font-semibold mb-2">New Arrival Everyday</h3>
+          <p class="text-sm text-[var(--muted)]">Fresh styles added regularly so you're always on trend.</p>
+        </div>
+        <div class="text-center">
+          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-[var(--primary)]/10 flex items-center justify-center text-2xl text-blue-800 border border-blue-200"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+</svg>
+</div>
+          <h3 class="font-semibold mb-2">Fast & Free Shipping</h3>
+          <p class="text-sm text-[var(--muted)]">Free delivery on all orders above ₹999, pan India.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEW ARRIVALS ============ -->
+  <section id="new-arrival" class="max-w-7xl mx-auto px-4 py-16">
+    <h2 class="heading-font text-3xl font-bold text-center mb-10">New Arrivals</h2>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+      <div class="product-card bg-white border border-gray-100 rounded-xl p-3 overflow-hidden">
+        <div class="overflow-hidden rounded-lg mb-3">
+          <img src="images/new1.jpg" onerror="this.src='https://placehold.co/300x300?text=New+1'" alt="Cotton T-Shirt" class="w-full" />
+        </div>
+        <p class="font-medium">Cotton T-Shirt</p>
+        <p class="text-[var(--primary)] font-bold">₹599</p>
+      </div>
+
+      <div class="product-card bg-white border border-gray-100 rounded-xl p-3 overflow-hidden">
+        <div class="overflow-hidden rounded-lg mb-3">
+          <img src="images/new2.jpg" onerror="this.src='https://placehold.co/300x300?text=New+2'" alt="Denim Jacket" class="w-full" />
+        </div>
+        <p class="font-medium">Denim Jacket</p>
+        <p class="text-[var(--primary)] font-bold">₹1499</p>
+      </div>
+
+      <div class="product-card bg-white border border-gray-100 rounded-xl p-3 overflow-hidden">
+        <div class="overflow-hidden rounded-lg mb-3">
+          <img src="images/new3.jpg" onerror="this.src='https://placehold.co/300x300?text=New+3'" alt="Running Shoes" class="w-full" />
+        </div>
+        <p class="font-medium">Running Shoes</p>
+        <p class="text-[var(--primary)] font-bold">₹2199</p>
+      </div>
+
+      <div class="product-card bg-white border border-gray-100 rounded-xl p-3 overflow-hidden">
+        <div class="overflow-hidden rounded-lg mb-3">
+          <img src="images/new4.jpg" onerror="this.src='https://placehold.co/300x300?text=New+4'" alt="Casual Cap" class="w-full" />
+        </div>
+        <p class="font-medium">Casual Cap</p>
+        <p class="text-[var(--primary)] font-bold">₹299</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ MOST WANTED ============ -->
+  <section id="most-wanted" class="bg-white py-16">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="heading-font text-3xl font-bold text-center mb-10">Most Wanted</h2>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+        <div class="product-card relative border border-gray-100 rounded-xl p-3 bg-white overflow-hidden">
+          <span class="absolute top-3 left-3 z-10 bg-[var(--accent)] text-[var(--primary-dark)] text-xs font-bold px-2 py-1 rounded-full">SALE</span>
+          <button class="wishlist-btn absolute top-3 right-3 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </button>
+          <div class="overflow-hidden rounded-lg mb-3">
+            <img src="images/mw1.jpg" onerror="this.src='https://placehold.co/300x300?text=Sports+Shoes'" alt="Sports Shoes" class="w-full" />
+          </div>
+          <p class="font-medium">Sports Shoes</p>
+          <p class="text-[var(--primary)] font-bold">₹1899</p>
+        </div>
+
+        <div class="product-card relative border border-gray-100 rounded-xl p-3 bg-white overflow-hidden">
+          <span class="absolute top-3 left-3 z-10 bg-[var(--accent)] text-[var(--primary-dark)] text-xs font-bold px-2 py-1 rounded-full">SALE</span>
+          <button class="wishlist-btn absolute top-3 right-3 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </button>
+          <div class="overflow-hidden rounded-lg mb-3">
+            <img src="images/mw2.jpg" onerror="this.src='https://placehold.co/300x300?text=Hoodie'" alt="Hoodie" class="w-full" />
+          </div>
+          <p class="font-medium">Hoodie</p>
+          <p class="text-[var(--primary)] font-bold">₹1299</p>
+        </div>
+
+        <div class="product-card relative border border-gray-100 rounded-xl p-3 bg-white overflow-hidden">
+          <span class="absolute top-3 left-3 z-10 bg-[var(--accent)] text-[var(--primary-dark)] text-xs font-bold px-2 py-1 rounded-full">SALE</span>
+          <button class="wishlist-btn absolute top-3 right-3 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </button>
+          <div class="overflow-hidden rounded-lg mb-3">
+            <img src="images/mw3.jpg" onerror="this.src='https://placehold.co/300x300?text=Formal+Shirt'" alt="Formal Shirt" class="w-full" />
+          </div>
+          <p class="font-medium">Formal Shirt</p>
+          <p class="text-[var(--primary)] font-bold">₹999</p>
+        </div>
+
+        <div class="product-card relative border border-gray-100 rounded-xl p-3 bg-white overflow-hidden">
+          <span class="absolute top-3 left-3 z-10 bg-[var(--accent)] text-[var(--primary-dark)] text-xs font-bold px-2 py-1 rounded-full">SALE</span>
+          <button class="wishlist-btn absolute top-3 right-3 z-10">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#9ca3af" stroke-width="2"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg>
+          </button>
+          <div class="overflow-hidden rounded-lg mb-3">
+            <img src="images/mw4.jpg" onerror="this.src='https://placehold.co/300x300?text=Track+Pant'" alt="Track Pant" class="w-full" />
+          </div>
+          <p class="font-medium">Track Pant</p>
+          <p class="text-[var(--primary)] font-bold">₹899</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ LIMITED OFFER BANNER ============ -->
+  <section class="max-w-7xl mx-auto px-4 py-6">
+    <div class="relative rounded-2xl overflow-hidden bg-[var(--primary)]">
+      <img src="images/offer.jpg" onerror="this.src='https://placehold.co/1200x300?text=Limited+Offer'" alt="Limited Offer" class="w-full h-64 object-cover opacity-30" />
+      <div class="absolute inset-0 flex flex-col items-center justify-center text-center text-white px-4">
+        <p class="uppercase tracking-widest text-[var(--accent)] text-sm font-semibold mb-2">Limited Offer</p>
+        <h2 class="heading-font text-2xl md:text-4xl font-extrabold mb-4">35% OFF for the first 30 Customers</h2>
+        <a href="collection.html" class="btn-primary bg-[var(--accent)] hover:bg-[var(--accent)] text-[var(--primary-dark)] px-7 py-3 rounded-full font-semibold">Shop Now</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ NEWSLETTER ============ -->
+  <section class="bg-white py-16">
+    <div class="max-w-xl mx-auto px-4 text-center">
+      <h2 class="heading-font text-2xl font-bold mb-2">Join our News Letter</h2>
+      <p class="text-[var(--muted)] mb-6">Signup for our email newsletter to get exclusive discounts, updates, and more.</p>
+      <form id="newsletterForm" class="flex flex-col sm:flex-row gap-3">
+        <input type="email" id="newsletterEmail" required placeholder="Enter your email"
+               class="flex-1 border border-gray-300 rounded-full px-5 py-3 focus:outline-none focus:ring-2 focus:ring-[var(--primary)]" />
+        <button type="submit" class="btn-primary text-white px-7 py-3 rounded-full font-semibold">Subscribe</button>
+      </form>
+      <p id="newsletterMsg" class="hidden text-[var(--primary)] font-medium mt-3">Thanks for subscribing! 🎉</p>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="bg-[#171412] text-gray-300 py-12">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col md:flex-row justify-between gap-8">
+      <div>
+        <p class="heading-font text-white text-xl font-bold mb-2">LUXE FASHION</p>
+        <p class="text-sm max-w-xs text-gray-400">Latest style, best quality - your fashion partner. Level up your style, Daily.</p>
+        <div class="text-xl pt-4 flex gap-5">
+        <i class="fa-brands fa-instagram cursor-pointer transition-all duration-300 hover:text-pink-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-brands fa-facebook cursor-pointer transition-all duration-300 hover:text-blue-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-brands fa-youtube cursor-pointer transition-all duration-300 hover:text-red-500 hover:scale-125 hover:rotate-12"></i>
+        <i class="fa-solid fa-feather cursor-pointer transition-all duration-300 hover:text-purple-500 hover:scale-125 hover:rotate-12"></i>
+        </div>
+      </div>
+      <div class="flex gap-10 text-sm">
+        <div>
+          <p class="text-white font-semibold mb-3">Quick Links</p>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html" class="hover:text-white">Home</a></li>
+            <li><a href="collection.html" class="hover:text-white">Collections</a></li>
+            <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-white font-semibold mb-3">Sections</p>
+          <ul class="space-y-2 text-gray-400">
+            <li><a href="index.html#new-arrival" class="hover:text-white">New Arrival</a></li>
+            <li><a href="index.html#most-wanted" class="hover:text-white">Most Wanted</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-500 mt-10">&copy; 2026 LUXEFASHION. All rights reserved.</p>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
