@@ -1,4 +1,4 @@
-// ----------- top annoncement bar close ----------------
+// ----------- top annoncement bar ----------------
 const topBar = document.getElementById("topBar");
 const closeTopBar = document.getElementById("closeTopBar");
 

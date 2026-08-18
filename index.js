@@ -30,7 +30,6 @@ let currentSlide = 0;
 let slideTimer;
 
 function showSlide(index) {
-  // total slide count vida over aana, first slide ku poidum. -1 aana last slide ku poidum
   if (index >= slides.length) index = 0;
   if (index < 0) index = slides.length - 1;
 
@@ -51,7 +50,7 @@ function showSlide(index) {
 function autoSlide() {
   slideTimer = setInterval(() => {
     showSlide(currentSlide + 1);
-  }, 4000); // 4 seconds ku oru slide maarum
+  }, 4000);
 }
 
 function resetTimer() {
