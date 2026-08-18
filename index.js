@@ -50,7 +50,7 @@ function showSlide(index) {
 function autoSlide() {
   slideTimer = setInterval(() => {
     showSlide(currentSlide + 1);
-  }, 4000);
+  }, 3000);
 }
 
 function resetTimer() {
